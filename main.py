@@ -16,5 +16,22 @@ def ocr_core(filename):
     return text
 
 
+# def ocr_output(filename):
+#
+#     '''
+#     This function will help out the text to an output file
+#     '''
+#
+#     text = pytesseract.image_to_string(Image.open(filename))
+#
+#     with open("output.txt", "w") as f:
+#         print(ocr_core('my data cropped.png', file=f))
+
+
 print(ocr_core('example_pic_1.PNG'))
 print(ocr_core('my data cropped.png'))
+
+output = ocr_core('my data cropped.png')
+file = open("output.txt", "w")
+file.write(output)
+file.close()
