@@ -1,3 +1,5 @@
+import pandas as pd
+
 try:
     from PIL import Image
 except ImportError:
@@ -35,3 +37,20 @@ output = ocr_core('my data cropped.png')
 file = open("output.txt", "w")
 file.write(output)
 file.close()
+
+lineList = [line.strip('\n') for line in open('output.txt')]
+print(lineList)
+
+lineList = [x for x in lineList if x != '']
+
+print(lineList)
+
+res = [lineList[x:x+2] for x in range(0, len(lineList),2)]
+
+print(res)
+
+columns = ['Date', 'Weight']
+
+
+df = pd.DataFrame(res, columns=columns)
+print(df.head(10))
