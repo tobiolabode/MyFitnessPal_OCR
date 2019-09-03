@@ -53,4 +53,7 @@ columns = ['Date', 'Weight']
 
 
 df = pd.DataFrame(res, columns=columns)
+df['Weight'] = df['Weight'].str.replace(r'kg', '')
 print(df.head(10))
+
+df.to_csv('Weight_over_time.csv', index=False, encoding='utf-8')
